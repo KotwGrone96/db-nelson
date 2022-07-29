@@ -4,6 +4,6 @@
 
 @layer {
   body {
-    @apply overflow-x-hidden;
+    @apply overflow-x-hidden text-white;
   }
 }

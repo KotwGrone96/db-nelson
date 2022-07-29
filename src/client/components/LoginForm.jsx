@@ -1,20 +1,9 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext } from "react";
 import { UserContext } from "../contexts/userContext";
 
 export default function LoginForm() {
   const context = useContext(UserContext);
-  const { allReadySigned, queryLogin } = context;
-
-  useEffect(() => {
-    const query = async () => {
-      if (!allReadySigned) {
-        console.log("USUARIO NO INGRESADO");
-        return;
-      }
-      console.log("USUARIO INGRESADO");
-    };
-    query();
-  }, [allReadySigned]);
+  const { queryLogin } = context;
 
   const initialFormFata = {
     user: "",
@@ -52,6 +41,7 @@ export default function LoginForm() {
             type='text'
             id='user'
             name='user'
+            autoComplete='username'
             onChange={handleChange}
             className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
             placeholder='user01'
@@ -70,6 +60,7 @@ export default function LoginForm() {
             type='password'
             id='pass'
             name='pass'
+            autoComplete='current-password'
             onChange={handleChange}
             className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5'
             required
